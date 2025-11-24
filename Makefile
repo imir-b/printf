@@ -6,12 +6,12 @@
 #    By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/16 21:47:42 by vbleskin          #+#    #+#              #
-#    Updated: 2025/11/16 23:12:47 by vbleskin         ###   ########.fr        #
+#    Updated: 2025/11/24 03:32:01 by vbleskin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC =	src/ft_printf.c src/ft_putchar.c src/ft_putnbr.c src/ft_putnbrbase.c \
-		src/ft_putnbr.c src/ft_putstr.c src/ft_putptr.c
+SRC =	ft_printf.c ft_putchar.c ft_putnbr.c ft_putnbrbase.c \
+		ft_putnbr.c ft_putstr.c ft_putptr.c
 OBJ =	$(SRC:.c=.o)
 
 CC = gcc
