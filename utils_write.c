@@ -1,0 +1,97 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_write.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/02 11:29:13 by vbleskin          #+#    #+#             */
+/*   Updated: 2025/12/02 14:07:23 by vbleskin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <unistd.h>
+#include "printf.h"
+
+int	ft_putchar(int i, t_struct *list)
+{
+	char	c;
+	int		bytes;
+
+	c = (char)i;
+	bytes = write(1, &c, 1);
+	if (bytes == -1)
+		list->error = 1;
+	return (bytes);
+}
+
+int	ft_putstr(char *str, t_struct *list)
+{
+	int	len;
+	int	bytes;
+
+	if (!str)
+	{
+		bytes = write(1, "(null)", 6);
+		if (bytes == -1)
+			list->error = 1;
+		return (bytes);
+	}
+	len = ft_strlen(str);
+	bytes = write(1, str, len);
+	if (bytes == -1)
+		list->error = 1;
+	return (bytes);
+}
+
+int	ft_putnbr(int nbr, t_struct *list)
+{
+	int	bytes;
+
+	bytes = 0;
+	if (nbr == -2147483648)
+	{
+		bytes = ft_putstr("-2147483648", list);
+		return (bytes);
+	}
+	else
+	{
+		if (nbr < 0)
+		{
+			bytes += ft_putchar('-', list);
+			nbr *= -1;
+		}
+		if (nbr > 9)
+			bytes += ft_putnbr(nbr / 10, list);
+		bytes += ft_putchar(nbr % 10 + '0', list);
+	}
+	return (bytes);
+}
+
+int	ft_putnbrbase(unsigned long long nbr, int bytes, char *base, t_struct *list)
+{
+	if (nbr >= ft_strlen(base))
+		bytes += ft_putnbrbase(nbr / ft_strlen(base), bytes, base, list);
+	bytes += ft_putchar(base[nbr % ft_strlen(base)], list);
+	return (bytes);
+}
+
+int	ft_putptr(void *ptr, t_struct *list)
+{
+	int				bytes;
+	unsigned long	n;
+
+	bytes = 0;
+	if (!ptr)
+	{
+		ft_putstr("(nil)", list);
+		return (5);
+	}
+	else
+	{
+		bytes = ft_putstr("0x", list);
+		n = (unsigned long long)ptr;
+		bytes += ft_putnbrbase(n, 0, "0123456789abcdef", list);
+	}
+	return (bytes);
+}

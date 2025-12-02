@@ -6,7 +6,7 @@
 #    By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/16 21:47:42 by vbleskin          #+#    #+#              #
-#    Updated: 2025/11/24 03:32:01 by vbleskin         ###   ########.fr        #
+#    Updated: 2025/12/02 11:28:50 by vbleskin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,6 @@ RM = rm -f
 AR = ar rcs
 
 NAME = libftprintf.a
-INCLUDES = -Iinclude
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@

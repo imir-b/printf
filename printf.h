@@ -1,27 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   printf.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:54:19 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/11/20 00:15:50 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/02 14:11:42 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#ifndef PRINTF_H
+# define PRINTF_H
 
-# include <unistd.h>
-# include <stdlib.h>
+# include <stddef.h>
 # include <stdarg.h>
 
-int	ft_putstr(char *str);
-int	ft_putptr(void *ptr);
-int	ft_putnbr(int nbr, char format);
-int	ft_putnbrbase(unsigned int nbr, int len, char format);
-int	ft_putchar(int i);
-int	ft_printf(const char *s, ...);
+typedef struct s_struct
+{
+	int	is_minus;
+	int	is_zero;
+	int	is_dot;
+	int	is_hash;
+	int	is_space;
+	int	is_plus;
+	int	error;
+}	t_struct;
+
+//WRITE UTILS
+int		ft_putstr(char *str, t_struct *list);
+int		ft_putptr(void *ptr, t_struct *list);
+int		ft_putnbr(int nbr, t_struct *list);
+int		ft_putnbrbase(unsigned long long nbr, int bytes, char *base, \
+			t_struct *list);
+int		ft_putchar(int i, t_struct *list);
+//UTILS
+int		ft_strlen(const char *str);
+char	*ft_strchr(char *str, char c);
+//PRINTF
+int		ft_printf(const char *s, ...);
 
 #endif

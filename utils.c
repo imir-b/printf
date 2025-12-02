@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/16 21:15:55 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/11/20 00:17:19 by vbleskin         ###   ########.fr       */
+/*   Created: 2025/12/02 11:58:29 by vbleskin          #+#    #+#             */
+/*   Updated: 2025/12/02 12:29:21 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "printf.h"
 
-int	ft_putnbr(int nbr, char format)
+unsigned int	ft_strlen(const char *str)
 {
-	int	len;
+	unsigned int	len;
 
 	len = 0;
-	if (nbr == -2147483648)
-	{
-		write(1, "-2147483648", 11);
-		return (11);
-	}
-	else
-	{
-		if (nbr < 0)
-		{
-			len += ft_putchar('-');
-			nbr *= -1;
-		}
-		if (nbr > 9)
-			len += ft_putnbr(nbr / 10, format);
-		len += ft_putchar(nbr % 10 + '0');
-	}
+	while (str[len])
+		len++;
 	return (len);
+}
+
+char	*ft_strchr(char *str, char c)
+{
+	while (*str && *str != c)
+		str++;
+	return (str);
 }
