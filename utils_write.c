@@ -6,12 +6,11 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 11:29:13 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/02 14:07:23 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/03 10:32:27 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "printf.h"
+#include "ft_printf.h"
 
 int	ft_putchar(int i, t_struct *list)
 {
@@ -68,10 +67,13 @@ int	ft_putnbr(int nbr, t_struct *list)
 	return (bytes);
 }
 
-int	ft_putnbrbase(unsigned long long nbr, int bytes, char *base, t_struct *list)
+int	ft_putnbrbase(unsigned long long nbr, char *base, t_struct *list)
 {
-	if (nbr >= ft_strlen(base))
-		bytes += ft_putnbrbase(nbr / ft_strlen(base), bytes, base, list);
+	int	bytes;
+
+	bytes = 0;
+	if (nbr >= (unsigned long long)ft_strlen(base))
+		bytes += ft_putnbrbase(nbr / ft_strlen(base), base, list);
 	bytes += ft_putchar(base[nbr % ft_strlen(base)], list);
 	return (bytes);
 }
@@ -84,14 +86,14 @@ int	ft_putptr(void *ptr, t_struct *list)
 	bytes = 0;
 	if (!ptr)
 	{
-		ft_putstr("(nil)", list);
-		return (5);
+		bytes = ft_putstr("(nil)", list);
+		return (bytes);
 	}
 	else
 	{
 		bytes = ft_putstr("0x", list);
 		n = (unsigned long long)ptr;
-		bytes += ft_putnbrbase(n, 0, "0123456789abcdef", list);
+		bytes += ft_putnbrbase(n, "0123456789abcdef", list);
 	}
 	return (bytes);
 }

@@ -6,13 +6,13 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:38:39 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/02 12:34:31 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/03 10:32:23 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stdio.h>
-// #include <limits.h>
-#include "printf.h"
+#include <stdio.h>
+#include <limits.h>
+#include "ft_printf.h"
 
 int	ft_printf(const char *s, ...)
 {
@@ -21,12 +21,15 @@ int	ft_printf(const char *s, ...)
 	int			len;
 
 	len = 0;
+	list = ft_init_list();
+	if (!list)
+		return (-1);
 	va_start(args, s);
 	len = ft_parsing(s, args, list);
 	va_end(args);
 	if (list->error == 1)
-		return (-1);
-	return (len);
+		return (free(list), -1);
+	return (free(list), len);
 }
 
 // void    check_case(char *desc, int ret_ft, int ret_orig)

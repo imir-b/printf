@@ -6,33 +6,35 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 11:38:24 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/02 14:54:55 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/03 10:32:17 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "printf.h"
+#include "ft_printf.h"
 
-int	ft_check_flags(char *s, t_struct *list)
+const char	*ft_check_flags(const char *s, t_struct *list)
 {
-	const char	flags = "-0.# +";
-	int			flaglen;
+	const char	*flags = "-0.# +";
 
-	while (ft_strchr(flags, s[flaglen]) && s[flaglen])
+	if (*s == '%')
+		s++;
+	while (ft_strchr(flags, *s) && *s)
 	{
-		if (s[flaglen] == '-')
+		if (*s == '-')
 			list->is_minus = 1;
-		else if (s[flaglen] == '0')
+		else if (*s == '0')
 			list->is_zero = 1;
-		else if (s[flaglen] == '.')
+		else if (*s == '.')
 			list->is_dot = 1;
-		else if (s[flaglen] == '#')
+		else if (*s == '#')
 			list->is_hash = 1;
-		else if (s[flaglen] == ' ')
+		else if (*s == ' ')
 			list->is_space = 1;
-		else if (s[flaglen] == '+')
+		else if (*s == '+')
 			list->is_plus = 1;
-		flaglen++;
+		s++;
 	}
+	return (s);
 }
 
 char	*ft_check_base(char format)
@@ -67,14 +69,14 @@ int	ft_check_format(char format, va_list args, t_struct *list)
 	else if (format == 'u' || format == 'x' || format == 'X')
 	{
 		base = ft_check_base(format);
-		len += ft_putnbrbase(va_arg(args, unsigned int), 0, base, list);
+		len += ft_putnbrbase(va_arg(args, unsigned int), base, list);
 	}
 	else if (format == '%')
 		len += ft_putchar('%', list);
 	return (len);
 }
 
-int	ft_put_until_percent(char *s, char *next_percent, t_struct *list)
+int	ft_put_until_percent(const char *s, char *next_percent, t_struct *list)
 {
 	int	dist;
 	int	bytes;
@@ -94,16 +96,19 @@ int	ft_parsing(const char *s, va_list args, t_struct *list)
 	len = 0;
 	while (*s)
 	{
-		next_percent = ft_strchr(s, '%');
+		next_percent = (char *)ft_strchr(s, '%');
 		if (next_percent)
 		{
 			len += ft_put_until_percent(s, next_percent, list);
-			s += ft_check_flags(s, list);
+			s = next_percent;
+			s = ft_check_flags(s, list);
 			len += ft_check_format(*s, args, list);
+			if (*s)
+				s++;
 		}
 		else
 		{
-			len += ft_putstr(s, list);
+			len += ft_putstr((char *)s, list);
 			break ;
 		}
 		if (list->error == 1)
