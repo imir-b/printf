@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 11:59:53 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/03 12:33:52 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/03 13:11:41 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	ft_isdigit(int c)
 		return (0);
 }
 
-int	ft_atoi_move(const char **s)
+int	ft_atoi_move(char **s)
 {
 	int	nb;
 

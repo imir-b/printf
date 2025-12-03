@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 11:38:24 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/03 12:37:45 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/03 13:20:49 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,20 @@ int	ft_process_percent(char **s, va_list args, t_struct *list)
 {
 	int	len;
 
-	len = 0;
 	(*s)++;
 	(*s) = ft_check_flags(*s, list);
-	len += ft_check_format(**s, args, list);
+	if (ft_isdigit(**s))
+	list->width = ft_atoi_move(s);
+	if (**s == '.')
+	{
+		list->is_dot = 1;
+		(*s)++;
+		if (ft_isdigit(**s))
+		list->precision = ft_atoi_move(s);
+		else
+		list->precision = 0;
+	}
+	len = ft_check_format(**s, args, list);
 	if (**s)
 		(*s)++;
 	return (ft_reset_list(list), len);
@@ -102,33 +112,3 @@ int	ft_parsing(const char *s, va_list args, t_struct *list)
 	}
 	return (len);
 }
-
-// int	ft_parsing(const char *s, va_list args, t_struct *list)
-// {
-// 	int		len;
-// 	char	*next_percent;
-
-// 	len = 0;
-// 	while (*s)
-// 	{
-// 		next_percent = (char *)ft_strchr(s, '%');
-// 		if (next_percent)
-// 		{
-// 			len += ft_put_until_percent(s, next_percent, list);
-// 			s = next_percent;
-// 			s = ft_check_flags(s, list);
-// 			len += ft_check_format(*s, args, list);
-// 			ft_reset_list(list);
-// 			if (*s)
-// 				s++;
-// 		}
-// 		else
-// 		{
-// 			len += ft_putstr((char *)s, list);
-// 			break ;
-// 		}
-// 		if (list->error == 1)
-// 			return (-1);
-// 	}
-// 	return (len);
-// }

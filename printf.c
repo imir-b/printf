@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:38:39 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/03 12:39:07 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/03 12:41:47 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	ft_printf(const char *s, ...)
 // int main(void)
 // {
 // 	int ret;
-    
+
 //     ret = ft_printf("Test %x", 42); 
 // 	ft_printf("\n%d\n", ret);
 //     return (0);
