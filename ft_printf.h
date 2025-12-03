@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:54:19 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/03 12:08:04 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/03 12:35:11 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int			ft_nbrlen(int nb);
 int			ft_isdigit(int c);
 int			ft_atoi_move(const char **s);
 //PARSING
-const char	*ft_check_flags(const char *s, t_struct *list);
+char		*ft_check_flags(char *s, t_struct *list);
 int			ft_parsing(const char *s, va_list args, t_struct *list);
 //PRINTF
 int			ft_printf(const char *s, ...);

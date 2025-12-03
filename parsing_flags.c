@@ -6,18 +6,16 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 11:41:15 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/03 11:48:02 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/03 12:34:57 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-const char	*ft_check_flags(const char *s, t_struct *list)
+char	*ft_check_flags(char *s, t_struct *list)
 {
 	const char	*flags = "-0.# +";
 
-	if (*s == '%')
-		s++;
 	while (ft_strchr(flags, *s) && *s)
 	{
 		if (*s == '-')
