@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:38:39 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/03 10:32:23 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/03 11:35:00 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,16 @@ int	ft_printf(const char *s, ...)
 	if (list->error == 1)
 		return (free(list), -1);
 	return (free(list), len);
+}
+
+int main(void)
+{
+    char *piege = NULL;
+	int ret;
+    
+    ret = ft_printf("Test %x", 42); 
+	ft_printf("\n%d\n", ret);
+    return (0);
 }
 
 // void    check_case(char *desc, int ret_ft, int ret_orig)
