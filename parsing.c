@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 11:38:24 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/03 13:20:49 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/03 22:00:12 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	ft_process_percent(char **s, va_list args, t_struct *list)
 	(*s)++;
 	(*s) = ft_check_flags(*s, list);
 	if (ft_isdigit(**s))
-	list->width = ft_atoi_move(s);
+		list->width = ft_atoi_move(s);
 	if (**s == '.')
 	{
 		list->is_dot = 1;
