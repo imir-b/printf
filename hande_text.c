@@ -6,7 +6,7 @@
 /*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 09:37:57 by vlad              #+#    #+#             */
-/*   Updated: 2025/12/04 09:53:48 by vlad             ###   ########.fr       */
+/*   Updated: 2025/12/04 10:37:17 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@ int	ft_hande_str(char *str, t_struct *list)
 	char	padding;
 
 	len = ft_strlen(str);
-	//precision
+	if (list->precision < len && list->precision >= 0)
+		len = list->precision; //truncate str new len
 	padding = ' ';
 	if (list->is_zero)
 		padding = '0';
@@ -28,7 +29,7 @@ int	ft_hande_str(char *str, t_struct *list)
     {
 		ret_len += ft_put_padding(list->width, len, padding, list);
 	}
-	ret_len += ft_putstr(str, list);
+	ret_len += ft_putstr(str, len, list);
 	if (list->is_minus)
 	{
 		ret_len += ft_put_padding(list->width, len, padding, list);

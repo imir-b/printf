@@ -6,7 +6,7 @@
 /*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 11:38:24 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/04 02:18:52 by vlad             ###   ########.fr       */
+/*   Updated: 2025/12/04 10:39:38 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	ft_parsing(const char *s, va_list args, t_struct *list)
 		}
 		else
 		{
-			len += ft_putstr((char *)s, list);
+			len += ft_putstr((char *)s, ft_strlen(s),list);
 			break ;
 		}
 		if (list->error == 1)

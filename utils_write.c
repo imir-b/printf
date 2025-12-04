@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_write.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 11:29:13 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/03 13:00:50 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/04 10:40:51 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,8 @@ int	ft_putchar(int i, t_struct *list)
 	return (bytes);
 }
 
-int	ft_putstr(char *str, t_struct *list)
+int	ft_putstr(char *str, int len, t_struct *list)
 {
-	int	len;
 	int	bytes;
 
 	if (!str)
@@ -36,7 +35,6 @@ int	ft_putstr(char *str, t_struct *list)
 			list->error = 1;
 		return (bytes);
 	}
-	len = ft_strlen(str);
 	bytes = write(1, str, len);
 	if (bytes == -1)
 		list->error = 1;
@@ -50,7 +48,7 @@ int	ft_putnbr(int nbr, t_struct *list)
 	bytes = 0;
 	if (nbr == -2147483648)
 	{
-		bytes = ft_putstr("-2147483648", list);
+		bytes = ft_putstr("-2147483648", 11, list);
 		return (bytes);
 	}
 	else
@@ -86,12 +84,12 @@ int	ft_putptr(void *ptr, t_struct *list)
 	bytes = 0;
 	if (!ptr)
 	{
-		bytes = ft_putstr("(nil)", list);
+		bytes = ft_putstr("(nil)", 5, list);
 		return (bytes);
 	}
 	else
 	{
-		bytes = ft_putstr("0x", list);
+		bytes = ft_putstr("0x", 2, list);
 		n = (unsigned long long)ptr;
 		bytes += ft_putnbrbase(n, "0123456789abcdef", list);
 	}

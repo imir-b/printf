@@ -6,7 +6,7 @@
 /*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:54:19 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/04 03:13:58 by vlad             ###   ########.fr       */
+/*   Updated: 2025/12/04 10:38:38 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ typedef struct s_struct
 }	t_struct;
 
 //WRITE UTILS
-int			ft_putstr(char *str, t_struct *list);
+int			ft_putstr(char *str, int len, t_struct *list);
 int			ft_putptr(void *ptr, t_struct *list);
 int			ft_putnbr(int nbr, t_struct *list);
 int			ft_putnbrbase(unsigned long long nbr, char *base, t_struct *list);
