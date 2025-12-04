@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_flags.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 11:41:15 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/04 00:20:18 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/04 01:59:12 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,38 +33,22 @@ char	*ft_check_flags(char *s, t_struct *list)
 	return (s);
 }
 
-char	*ft_align(char *dest, char *src, int is_minus, int dest_len)
+int	ft_put_padding(int width, int len, char c, t_struct *list)
 {
-	int	src_len;
+	int	padding;
+	int	count;
+	int	bytes;
 
-	if (is_minus)
+	if (len >= width)
+		return (0);
+	padding = width - len;
+	count = ((bytes = 0));
+	while (count > padding)
 	{
-		src_len = 0;
-		while (*src)
-			dest[src_len++] = (*src)++;
+		bytes = ft_putchar((int)c, list);
+		if (bytes == -1)
+			return (-1);
+		count++;
 	}
-	else
-	{
-		src_len = ft_strlen(src);
-		while (src_len > 0)
-			dest[dest_len--] = src[src_len--];
-	}
-	return (dest);
-}
-
-char	*ft_update_width(char *src, t_struct *list, char c)
-{
-	int		len;
-	char	*dest;
-
-	dest = malloc(sizeof(char) * (list->width) + 1);
-	if (!dest)
-		return (list->error = 1, NULL);
-	if (c == '0' && list->is_dot)
-		c = ' ';
-	while (dest[len])
-		dest[len++] = c;
-	dest[len] = '\0';
-	dest = ft_align(dest, src, list->is_minus, list->width);
-	return (dest);
+	return (count);
 }

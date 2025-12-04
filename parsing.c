@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 11:38:24 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/03 22:00:12 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/04 02:18:52 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_check_base(unsigned int arg, char format, t_struct *list)
 		base = "0123456789abcdef";
 	if (format == 'X')
 		base = "0123456789ABCDEF";
-	len += ft_putnbrbase(arg, base, list);
+	len += ft_handle_nbrbase(arg, base, list);
 	return (len);
 }
 
@@ -38,13 +38,13 @@ int	ft_check_format(char format, va_list args, t_struct *list)
 		return (list->error = -1, -1);
 	len = 0;
 	if (format == 'c')
-		len += ft_putchar(va_arg(args, int), list);
+		len += ft_handle_char(va_arg(args, int), list);
 	else if (format == 's')
-		len += ft_putstr(va_arg(args, char *), list);
+		len += ft_handle_str(va_arg(args, char *), list);
 	else if (format == 'p')
-		len += ft_putptr(va_arg(args, void *), list);
+		len += ft_handle_ptr(va_arg(args, void *), list);
 	else if (format == 'd' || format == 'i')
-		len += ft_putnbr(va_arg(args, int), list);
+		len += ft_handle_int(va_arg(args, int), list);
 	else if (format == 'u' || format == 'x' || format == 'X')
 		len += ft_check_base(va_arg(args, unsigned int), format, list);
 	else if (format == '%')
@@ -69,7 +69,7 @@ int	ft_process_percent(char **s, va_list args, t_struct *list)
 	int	len;
 
 	(*s)++;
-	(*s) = ft_check_flags(*s, list);
+	*s = ft_check_flags(*s, list);
 	if (ft_isdigit(**s))
 		list->width = ft_atoi_move(s);
 	if (**s == '.')
