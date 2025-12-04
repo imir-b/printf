@@ -6,7 +6,7 @@
 /*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 11:41:15 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/04 01:59:12 by vlad             ###   ########.fr       */
+/*   Updated: 2025/12/04 16:03:16 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	ft_put_padding(int width, int len, char c, t_struct *list)
 		return (0);
 	padding = width - len;
 	count = ((bytes = 0));
-	while (count > padding)
+	while (count < padding)
 	{
 		bytes = ft_putchar((int)c, list);
 		if (bytes == -1)

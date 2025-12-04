@@ -6,7 +6,7 @@
 /*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:54:19 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/04 10:38:38 by vlad             ###   ########.fr       */
+/*   Updated: 2025/12/04 15:40:16 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,13 @@ int			ft_strlen(const char *str);
 const char	*ft_strchr(const char *str, char c);
 int			ft_nbrlen(int nb);
 int			ft_isdigit(int c);
-int			ft_atoi_move(const char **s);
+int			ft_atoi_move(char **s);
 //HANDLE FT
 int			ft_handle_int(int nb, t_struct *list);
-int			ft_handle_char();
-int			ft_handle_str();
-int			ft_handle_nbrbase();
-int			ft_handle_ptr();
+int			ft_handle_char(int c, t_struct *list);
+int			ft_handle_str(char *str, t_struct *list);
+int			ft_handle_nbrbase(unsigned int n, char *base, t_struct *list);
+int			ft_handle_ptr(void *ptr, t_struct *list);
 //PARSING
 int			ft_put_padding(int width, int len, char c, t_struct *list);
 char		*ft_check_flags(char *s, t_struct *list);

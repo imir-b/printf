@@ -6,7 +6,7 @@
 /*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 01:41:21 by vlad              #+#    #+#             */
-/*   Updated: 2025/12/04 10:31:22 by vlad             ###   ########.fr       */
+/*   Updated: 2025/12/04 15:58:26 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ int	ft_handle_int(int nb, t_struct *list)
 	len = ft_nbrlen(nb);
 	ret_len = 0;
 	padding = ' ';
-	if (list->is_zero && list->precision < 0)
+	if (list->is_zero && list->precision < 0 && !list->is_minus)
 		padding = '0';
 	if (!list->is_minus)
 		ret_len += ft_put_padding(list->width, len, padding, list);
-	ret_len += ft_put_sign(&nb, &len, list->is_plus);
+	ret_len += ft_put_sign(&nb, &len, list);
 	while (len < list->precision)
 	{
 		ret_len += ft_putchar('0', list);
@@ -73,7 +73,7 @@ int	ft_handle_nbrbase(unsigned int nb, char *base, t_struct *list)
 	int	ret_len;
 	char padding;
 
-	len = ; //len ?
+	//len = ; //len ?
 	//precision
 	padding = ' ';
 	ret_len = 0;
