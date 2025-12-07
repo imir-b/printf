@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:54:19 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/07 18:34:35 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/07 20:36:21 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ t_struct	*ft_init_list(void);
 void		ft_reset_list(t_struct *list);
 int			ft_strlen(const char *str);
 const char	*ft_strchr(const char *str, char c);
-int			ft_nbrlen(int nb);
+int			ft_nbrlen(long long nb);
 int			ft_nbaselen(unsigned long long n, int base_len);
 int			ft_isdigit(int c);
 int			ft_isupper(const char *str);

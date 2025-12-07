@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 11:58:29 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/03 13:10:09 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/07 20:29:28 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ const char	*ft_strchr(const char *str, char c)
 	return (str);
 }
 
-int	ft_nbrlen(int nb)
+int	ft_nbrlen(long long nb)
 {
 	int	len;
 

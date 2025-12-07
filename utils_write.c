@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 11:29:13 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/07 18:34:57 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/07 19:29:26 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,25 +43,16 @@ int	ft_putstr(char *str, int len, t_struct *list)
 
 int	ft_putnbr(int nbr, t_struct *list)
 {
-	int	bytes;
+	int			bytes;
+	long long	nb;
 
 	bytes = 0;
-	if (nbr == -2147483648)
-	{
-		bytes = ft_putstr("-2147483648", 11, list);
-		return (bytes);
-	}
-	else
-	{
-		if (nbr < 0)
-		{
-			bytes += ft_putchar('-', list);
-			nbr *= -1;
-		}
-		if (nbr > 9)
-			bytes += ft_putnbr(nbr / 10, list);
-		bytes += ft_putchar(nbr % 10 + '0', list);
-	}
+	nb = (long long) nbr;
+	if (nb < 0)
+		nb *= -1;
+	if (nb > 9)
+		bytes += ft_putnbr(nb / 10, list);
+	bytes += ft_putchar(nb % 10 + '0', list);
 	return (bytes);
 }
 

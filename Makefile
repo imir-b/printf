@@ -6,11 +6,12 @@
 #    By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/11/16 21:47:42 by vbleskin          #+#    #+#              #
-#    Updated: 2025/12/03 10:28:37 by vbleskin         ###   ########.fr        #
+#    Updated: 2025/12/07 18:58:04 by vbleskin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRC =	printf.c parsing.c utils_write.c utils.c
+SRC =	printf.c parsing.c parsing_flags.c handle_numbers.c handle_text.c \
+		utils_write.c utils.c utils2.c
 OBJ =	$(SRC:.c=.o)
 
 CC = gcc
@@ -24,6 +25,8 @@ NAME = libftprintf.a
 	$(CC) $(CFLAGS) -c $< -o $@
 
 all : 		$(NAME)
+
+bonus :		all
 
 $(NAME) :		$(OBJ)
 			$(AR) $@ $^

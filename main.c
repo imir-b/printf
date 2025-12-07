@@ -2,16 +2,16 @@
 #include <limits.h>
 #include "ft_printf.h"
 
-// int main(void)
-// {
-// 	int ret;
-//     void *ptr = NULL;
+int main(void)
+{
+	int ret;
 
-// 	ret = ft_printf("%-10p", ptr);
-//     ft_printf("\n%d\n", ret);
-//     printf("%-10p", ptr);
-//     return (0);
-// }
+	ret = ft_printf("%5.x", 50);
+    ft_printf("\n%d\n", ret);
+    ret = printf("%5.x", 50);
+    printf("\n%d\n", ret);
+    return (0);
+}
 
 // void    check_case(char *desc, int ret_ft, int ret_orig)
 // {

@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 09:37:57 by vlad              #+#    #+#             */
-/*   Updated: 2025/12/07 18:38:16 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/07 18:55:13 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,21 @@ int	ft_handle_str(char *str, t_struct *list)
 {
 	int		len;
 	int		ret_len;
-	char	padding;
 
+	if (!str)
+		str = "(null)";
 	len = ft_strlen(str);
 	if (list->precision < len && list->precision >= 0)
 		len = list->precision;
-	padding = ' ';
 	ret_len = 0;
 	if (!list->is_minus)
 	{
-		ret_len += ft_put_padding(list->width, len, padding, list);
+		ret_len += ft_put_padding(list->width, len, ' ', list);
 	}
 	ret_len += ft_putstr(str, len, list);
 	if (list->is_minus)
 	{
-		ret_len += ft_put_padding(list->width, len, padding, list);
+		ret_len += ft_put_padding(list->width, len, ' ', list);
 	}
 	return (ret_len);
 }
