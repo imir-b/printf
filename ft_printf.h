@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:54:19 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/05 20:20:19 by vlad             ###   ########.fr       */
+/*   Updated: 2025/12/07 18:34:35 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ typedef struct s_struct
 int			ft_putstr(char *str, int len, t_struct *list);
 int			ft_putptr(void *ptr, t_struct *list);
 int			ft_putnbr(int nbr, t_struct *list);
-int			ft_putnbrbase(unsigned long long nbr, char *base, t_struct *list);
+int			ft_putnbrbase(unsigned long long nbr, const char *base, \
+				t_struct *list);
 int			ft_putchar(int i, t_struct *list);
 //UTILS
 t_struct	*ft_init_list(void);
@@ -45,13 +46,13 @@ const char	*ft_strchr(const char *str, char c);
 int			ft_nbrlen(int nb);
 int			ft_nbaselen(unsigned long long n, int base_len);
 int			ft_isdigit(int c);
-int			ft_isupper(char *str);
+int			ft_isupper(const char *str);
 int			ft_atoi_move(char **s);
 //HANDLE FT
 int			ft_handle_int(int nb, t_struct *list);
 int			ft_handle_char(int c, t_struct *list);
 int			ft_handle_str(char *str, t_struct *list);
-int			ft_handle_nbrbase(unsigned int n, char *base, t_struct *list);
+int			ft_handle_nbrbase(unsigned int n, const char *base, t_struct *list);
 int			ft_handle_ptr(void *ptr, t_struct *list);
 //PARSING
 int			ft_put_padding(int width, int len, char c, t_struct *list);

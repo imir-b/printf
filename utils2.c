@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 11:59:53 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/05 20:19:49 by vlad             ###   ########.fr       */
+/*   Updated: 2025/12/07 18:34:22 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,20 @@ int	ft_atoi_move(char **s)
 	return (nb);
 }
 
-int ft_nbaselen(unsigned long long n, int base_len)
+int	ft_nbaselen(unsigned long long n, int base_len)
 {
-    int len = 1;
-    while (n >= (unsigned long long)base_len)
-    {
-        n /= base_len;
-        len++;
-    }
-    return (len);
+	int	len;
+
+	len = 1;
+	while (n >= (unsigned long long)base_len)
+	{
+		n /= base_len;
+		len++;
+	}
+	return (len);
 }
 
-int	ft_isupper(char *str)
+int	ft_isupper(const char *str)
 {
 	while (*str)
 	{

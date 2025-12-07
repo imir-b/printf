@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 11:38:24 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/04 15:26:03 by vlad             ###   ########.fr       */
+/*   Updated: 2025/12/07 18:32:17 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_check_base(unsigned int arg, char format, t_struct *list)
 		base = "0123456789abcdef";
 	if (format == 'X')
 		base = "0123456789ABCDEF";
-	len += ft_handle_nbrbase(arg, base, list);
+	len += ft_handle_nbrbase(arg, (const char *)base, list);
 	return (len);
 }
 

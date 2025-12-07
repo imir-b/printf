@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   handle_numbers.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 01:41:21 by vlad              #+#    #+#             */
-/*   Updated: 2025/12/05 21:00:18 by vlad             ###   ########.fr       */
+/*   Updated: 2025/12/07 18:34:09 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,9 @@ int	ft_put_sign(int *nb, int *len, t_struct *list)
 int	ft_handle_int(int nb, t_struct *list)
 {
 	int		len;
-	int 	ret_len;
+	int		ret_len;
 	char	padding;
-	
+
 	if (nb == 0 && list->precision == 0)
 		return (0);
 	len = ft_nbrlen(nb);
@@ -67,7 +67,7 @@ int	ft_handle_int(int nb, t_struct *list)
 	return (ret_len);
 }
 
-int	ft_handle_nbrbase(unsigned int nb, char *base, t_struct *list)
+int	ft_handle_nbrbase(unsigned int nb, const char *base, t_struct *list)
 {
 	int	len;
 	int	ret_len;
