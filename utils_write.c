@@ -6,7 +6,7 @@
 /*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 11:29:13 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/04 10:40:51 by vlad             ###   ########.fr       */
+/*   Updated: 2025/12/05 19:54:10 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,6 @@ int	ft_putptr(void *ptr, t_struct *list)
 	}
 	else
 	{
-		bytes = ft_putstr("0x", 2, list);
 		n = (unsigned long long)ptr;
 		bytes += ft_putnbrbase(n, "0123456789abcdef", list);
 	}

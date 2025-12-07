@@ -6,7 +6,7 @@
 /*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:54:19 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/04 15:40:16 by vlad             ###   ########.fr       */
+/*   Updated: 2025/12/05 20:20:19 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,9 @@ void		ft_reset_list(t_struct *list);
 int			ft_strlen(const char *str);
 const char	*ft_strchr(const char *str, char c);
 int			ft_nbrlen(int nb);
+int			ft_nbaselen(unsigned long long n, int base_len);
 int			ft_isdigit(int c);
+int			ft_isupper(char *str);
 int			ft_atoi_move(char **s);
 //HANDLE FT
 int			ft_handle_int(int nb, t_struct *list);

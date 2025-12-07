@@ -6,7 +6,7 @@
 /*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 09:37:57 by vlad              #+#    #+#             */
-/*   Updated: 2025/12/04 15:51:25 by vlad             ###   ########.fr       */
+/*   Updated: 2025/12/05 19:53:52 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,22 +60,20 @@ int	ft_handle_ptr(void *ptr, t_struct *list)
 {
  	int		len;
 	int		ret_len;
-	char	padding;
 
-	//len = ; //len ?
+	len = ft_nbaselen((unsigned long long)ptr, 16);
 	//precision
-	padding = ' ';
-	if (list->is_zero)
-		padding = '0';
 	ret_len = 0;
 	if (!list->is_minus)
     {
-		ret_len += ft_put_padding(list->width, len, padding, list);
+		ret_len += ft_put_padding(list->width, len, ' ', list);
 	}
+	ret_len += ft_putstr("0x", 2, list);
 	ret_len += ft_putptr(ptr, list);
+
 	if (list->is_minus)
 	{
-		ret_len += ft_put_padding(list->width, len, padding, list);
+		ret_len += ft_put_padding(list->width, len, ' ', list);
 	}
 	return (ret_len);
 }

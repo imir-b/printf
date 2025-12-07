@@ -6,8 +6,8 @@ int main(void)
 {
 	int ret;
 
-	ret = printf("%5.3d", 11);
-    printf("\n%d", ret);
+	ret = ft_printf("%-#5x", 1);
+    ft_printf("\n%d", ret);
     return (0);
 }
 

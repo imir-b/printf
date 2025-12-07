@@ -6,7 +6,7 @@
 /*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 01:41:21 by vlad              #+#    #+#             */
-/*   Updated: 2025/12/04 15:58:26 by vlad             ###   ########.fr       */
+/*   Updated: 2025/12/05 21:00:18 by vlad             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,16 +71,26 @@ int	ft_handle_nbrbase(unsigned int nb, char *base, t_struct *list)
 {
 	int	len;
 	int	ret_len;
-	char padding;
 
-	//len = ; //len ?
-	//precision
-	padding = ' ';
+	len = ft_nbaselen((unsigned long long)nb, ft_strlen(base));
+	if (list->is_minus)
+		list->is_zero = 0;
+	if (list->is_hash && nb != 0)
+		len += 2;
 	ret_len = 0;
-	if (!list->is_minus)
-		ret_len += ft_put_padding(list->width, len, padding, list);
+	if (!list->is_minus && !list->is_zero)
+		ret_len += ft_put_padding(list->width, len, ' ', list);
+	if (list->is_hash && nb != 0)
+	{
+		if (ft_isupper(base))
+			ret_len += ft_putstr("0X", 2, list);
+		else
+			ret_len += ft_putstr("0x", 2, list);
+	}
+	if (!list->is_minus && list->is_zero)
+		ret_len += ft_put_padding(list->width, len, '0', list);
 	ret_len += ft_putnbrbase((unsigned long long)nb, base, list);
 	if (list->is_minus)
-		ret_len += ft_put_padding(list->width, len, padding, list);
+		ret_len += ft_put_padding(list->width, len, ' ', list);
 	return (ret_len);
 }
