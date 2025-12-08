@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 11:38:24 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/07 18:32:17 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/08 12:26:14 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	ft_parsing(const char *s, va_list args, t_struct *list)
 		}
 		else
 		{
-			len += ft_putstr((char *)s, ft_strlen(s),list);
+			len += ft_putstr((char *)s, ft_strlen(s), list);
 			break ;
 		}
 		if (list->error == 1)

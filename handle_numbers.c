@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/04 01:41:21 by vlad              #+#    #+#             */
-/*   Updated: 2025/12/07 21:13:07 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/08 12:25:31 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	ft_print_int(long long n, int zeros, char sign, t_struct *list)
 		ret_len += ft_put_padding(list->width, len, '0', list);
 	while (zeros-- > 0)
 		ret_len += ft_putchar('0', list);
-	ret_len += ft_putnbr(n, list);
+	if (n != 0 || list->precision != 0)
+		ret_len += ft_putnbr(n, list);
 	if (list->is_minus)
 		ret_len += ft_put_padding(list->width, len, ' ', list);
 	return (ret_len);
@@ -85,7 +86,8 @@ int	ft_print_hex(unsigned long long n, int zeros, const char *base, \
 		ret_len += ft_put_padding(list->width, len, '0', list);
 	while (zeros-- > 0)
 		ret_len += ft_putchar('0', list);
-	ret_len += ft_putnbrbase(n, base, list);
+	if (n != 0 || list->precision != 0)
+		ret_len += ft_putnbrbase(n, base, list);
 	if (list->is_minus)
 		ret_len += ft_put_padding(list->width, len, ' ', list);
 	return (ret_len);
