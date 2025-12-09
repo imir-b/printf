@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 11:38:24 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/08 12:26:14 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/09 12:56:21 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,7 @@ int	ft_check_base(unsigned int arg, char format, t_struct *list)
 int	ft_check_format(char format, va_list args, t_struct *list)
 {
 	int			len;
-	const char	*conversions = "cspdiuxX%";
 
-	if (!ft_strchr(conversions, format))
-		return (list->error = -1, -1);
 	len = 0;
 	if (format == 'c')
 		len += ft_handle_char(va_arg(args, int), list);
@@ -66,8 +63,10 @@ int	ft_put_until_percent(const char *s, char *next_percent, t_struct *list)
 
 int	ft_process_percent(char **s, va_list args, t_struct *list)
 {
-	int	len;
+	int		len;
+	char	*start;
 
+	start = *s;
 	(*s)++;
 	*s = ft_check_flags(*s, list);
 	if (ft_isdigit(**s))
@@ -81,7 +80,10 @@ int	ft_process_percent(char **s, va_list args, t_struct *list)
 		else
 		list->precision = 0;
 	}
-	len = ft_check_format(**s, args, list);
+	if (ft_strchr("cspdiuxX%", **s))
+		len = ft_check_format(**s, args, list);
+	else
+		len = ft_putstr(start, *s - start + 1, list);
 	if (**s)
 		(*s)++;
 	return (ft_reset_list(list), len);

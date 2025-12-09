@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/03 11:59:53 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/07 18:34:22 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/09 12:37:36 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ int	ft_atoi_move(char **s)
 	int	nb;
 
 	nb = 0;
+	if (!s || !*s)
+		return (-1);
 	while (**s && ft_isdigit((int)**s))
 	{
 		nb = nb * 10 + (**s - '0');
@@ -48,6 +50,8 @@ int	ft_nbaselen(unsigned long long n, int base_len)
 
 int	ft_isupper(const char *str)
 {
+	if (!str)
+		return (0);
 	while (*str)
 	{
 		if (*str <= 'z' && *str >= 'a')

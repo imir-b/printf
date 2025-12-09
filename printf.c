@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   printf.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vlad <vlad@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/15 13:38:39 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/04 15:31:27 by vlad             ###   ########.fr       */
+/*   Updated: 2025/12/09 12:26:09 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	ft_printf(const char *s, ...)
 	t_struct	*list;
 	int			len;
 
+	if (s == NULL)
+		return (-1);
 	len = 0;
 	list = ft_init_list();
 	if (!list)

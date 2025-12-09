@@ -6,7 +6,7 @@
 /*   By: vbleskin <vbleskin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/02 11:58:29 by vbleskin          #+#    #+#             */
-/*   Updated: 2025/12/07 20:29:28 by vbleskin         ###   ########.fr       */
+/*   Updated: 2025/12/09 12:37:13 by vbleskin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ t_struct	*ft_init_list(void)
 
 void	ft_reset_list(t_struct *list)
 {
-	list->error = 0;
 	list->width = 0;
 	list->precision = -1;
 	list->is_minus = 0;
@@ -49,6 +48,8 @@ int	ft_strlen(const char *str)
 	int	len;
 
 	len = 0;
+	if (!str)
+		return (0);
 	while (str[len])
 		len++;
 	return (len);
@@ -56,6 +57,8 @@ int	ft_strlen(const char *str)
 
 const char	*ft_strchr(const char *str, char c)
 {
+	if (!str)
+		return (NULL);
 	while (*str && *str != c)
 		str++;
 	if (*str == '\0')
